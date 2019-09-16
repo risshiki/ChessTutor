@@ -1,0 +1,81 @@
+
+/*
+Name allows you to recognize the problem
+Subgoal allows you to switch between operations performed by rules : selectCross, inferFromCross ,makeInferences, enterInferences
+firstStrainCurCross allows us to toggle between values of field 1 and field 2. 
+curCross allows the inferFrom rules to access the cross type and make inferences to send it to makeInferences which finds the implicit inferences. 
+strains stores the strain values.
+interfaceRows stores the values of the rows of the Interface.
+
+*/
+
+
+
+
+
+define Problem {
+	name: null,
+	attackType: null,
+	diagonalAttack: null,
+	fileAttack: null,
+	knightAttack: null,
+	suppAttack: null,
+	checkmated: null,
+	interfaceElement: null, 
+	fen: null,
+	finishedEntering : null,
+	constructor: function(name, fen, ie) 
+	{
+		this.name = name;
+		this.attackType = [];
+		this.diagonalAttack = null;
+		this.fileAttack = null;
+		this.knightAttack = null;
+		this.suppAttack = null;
+		this.checkmated = false;
+		this.fen = fen;
+		this.interfaceElement = ie;
+		this.finishedEntering = false;
+	}
+}
+
+define interfaceElement {
+	name: null,
+	value: null,
+	constructor: function(n, v) {
+		this.name = n;
+		this.value = v;
+	}
+}
+
+
+define StudentValues {
+	selection: null,
+	action: null,
+	input: null,
+	constructor: function(s, a, i) {
+		this.selection = s;
+		this.action = a;
+		this.input = i;
+	}
+}
+
+define TPA {
+	selection: null,
+	action: null,
+	input: null,
+	constructor: function(s, a, i) {
+		this.selection = s;
+		this.action = a;
+		this.input = i;
+	}
+}
+
+define Hint {
+	precedence: 0,
+	msg: "",
+	constructor: function(m, optPrecedence) {
+		this.msg = m;
+		this.precedence = optPrecedence || 0;
+	}
+}

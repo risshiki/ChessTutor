@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head>    
+    <meta charset="UTF-8">
+    <!-- generator meta tag -->
+    <!-- leave this for stats and Silex version check -->
+    <meta name="generator" content="Silex v2.2.5">
+    <!-- End of generator meta tag -->
+    <!--CSS-->
+    <link data-silex-static="true" href="https://cdn.ctat.cs.cmu.edu/html-editor/css/silex/normalize.css" rel="stylesheet">
+    <link data-silex-static="true" href="https://cdn.ctat.cs.cmu.edu/html-editor/css/silex/front-end.css" rel="stylesheet">
+    <link data-silex-static="true" href="https://cdn.ctat.cs.cmu.edu/releases/latest/CTAT.css" rel="stylesheet">
+    <!--JS-->
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/html-editor/js/jquery.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/html-editor/js/jquery-ui.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/releases/beta/nools.js"></script>
+    
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/releases/latest/ctatloader.js"></script>
+    <script data-silex-static="true" type="text/javascript" src="https://cdn.ctat.cs.cmu.edu/releases/beta/ctat.min.js"></script>
+
+
+    <style type="text/css" class="silex-style"></style>
+    
+    <meta name="interface-id" content="BasicSkeleton">
+
+    
+    
+
+    <style id="current-page-style">
+        .page-page-1{display:inherit; }
+    </style>
+    <!-- Silex HEAD tag do not remove -->
+    <!-- End of Silex HEAD tag do not remove -->
+
+
+
+
+<link rel="stylesheet" href="Assets/BasicSkeleton-styles.css">
+<link rel="stylesheet" href="lib/chessboardjs/css/chessboard-0.3.0.css">
+<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+
+    <body class="body-initial prevent-draggable silex-runtime silex-published">
+
+    <div id="board" class="board" style = "margin-left: 250px;"></div>
+    
+        <div id="move-history" class="move-history">
+        </div>
+    </div>
+    <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="lib/chessboardjs/js/chess.js"></script>
+    <script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
+    <script src="new_script_js.js"></script>
+
+    <a id="page-page-1" data-silex-type="page" class="page-element">Page 1</a>
+    <div data-silex-id="background-initial" class="background background-initial editable-style container-element prevent-draggable" data-silex-type="container">
+        <div data-silex-type="ctat" class="CTATHintWidget undefined editable-style silex-id-1542140397363-0 page-page-1 paged-element" data-ctat-tabindex="1" data-silex-id="silex-id-1542140397363-0">
+            <table style="width: 100%; height: 100%;">
+                <tbody>
+                    <tr height="125">
+                        <td>
+                            <div class="CTATHintWindow CTATComponent" id="ctatdiv7" data-ctat-component="CTATHintWindow" onkeypress="return noenter(event)" data-ctat-enabled="true"></div>
+                        </td>
+                        <td width="64" style="padding-top: 0px; padding-bottom: 0px;">
+                            <div id="hint" style="margin-bottom: 2px" class="CTATHintButton CTATComponent" data-ctat-component="CTATHintButton" data-ctat-enabled="true"></div>
+                            <div id="done" class="CTATDoneButton CTATComponent" data-ctat-component="CTATDoneButton" data-ctat-enabled="true"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div data-silex-type="text" class="CTATTextField editable-style silex-id-1542140713887-3 text-element page-page-1 paged-element CTATComponent" data-silex-id="silex-id-1542140713887-3" id="ctatdiv17" data-ctat-component="CTATTextBasedComponent" data-ctat-enabled="true" contenteditable="true">White to play and win</div>
+        <!-- <div data-silex-type="ctat" class="CTATTextInput editable-style silex-id-1543462030739-3 page-page-1 paged-element CTATComponent" data-ctat-tabindex="1" data-silex-id="silex-id-1543462030739-3" id="ctatdiv10" data-ctat-component="CTATTextInput" data-ctat-enabled="true" style = "top: 40px;left: 180px;">
+        </div> -->
+        <div data-silex-type="ctat" class="CTATComboBox editable-style silex-id-1539819870654-11 page-page-1 paged-element CTATComponent" data-ctat-tabindex="3" data-silex-id="silex-id-1539819870654-11" id="concPartStr1" data-ctat-component="CTATComboBox" data-ctat-enabled="true" data-ctat-labels="---select ---,Diagonal Attack,File Attack,Knight Attack,Supported Attack" style="top:50px;left:150px; visibility: hidden;"></div>
+    </div>
+    <div data-silex-type="text" class="CTATTextField editable-style silex-id-154214071388-3 text-element page-page-1 paged-element CTATComponent" data-silex-id="silex-id-1542140713888-3" id="ctatdiv18" data-ctat-component="CTATTextBasedComponent" data-ctat-enabled="true" contenteditable="false" style="top: 460px; left: 700px; visibility: hidden;">
+    <p>What type of attack was this? </p> 
+
+    <p id = "attack-description"> 1. Diagonal Attack : Piece attacks king diagonally </br>
+        2. File Attack : Piece attacks king in a straight line </br>
+        3. Knight Attack : Knight attacks king </br>
+        4. Supported Attack : Piece attacks king but king cannot capture as it is supported by another piece </br>
+
+    </p>
+
+
+    </div>
+    
+    </body>
+
+</html>

@@ -1,0 +1,198 @@
+import ("types.nools");
+
+
+rule bootstrap {
+	when {
+		b: Boolean b === true from true;
+	}
+	then {
+		
+		let ie = assert(new interfaceElement('concPartStr1', null));
+		
+		assert(new Problem('probname', FEN_STRING, ie));
+		createBoard(FEN_STRING);
+		setProblemAttribute("use_backtracking", true);
+		halt();
+	}
+}
+
+rule checkmated {
+	when {
+		prob: Problem prob.checkmated === false;
+		sv : StudentValues {input : ct};
+		}
+	then {
+		if (checkSAI({selection: "globalVar", action: "Update", input: "don't_care"})) 
+		{
+			var ct_ARRAY = ct.split(',');
+			
+			for(i=0; i < ct_ARRAY.length;i++)
+			{
+				if(ct_ARRAY[i] == 'DIAGONAL')
+				{
+					
+					var pushme = prob.attackType;
+					pushme.push("Diagonal Attack");
+					modify(prob, 'attackType', pushme);		
+					modify(prob, 'diagonalAttack', true);		
+				}
+
+				if(ct_ARRAY[i] == 'FILE')
+				{
+					var pushme = prob.attackType;
+					pushme.push("File Attack");
+					modify(prob, 'attackType', pushme);
+					modify(prob, 'fileAttack', true);		
+				}
+
+				if(ct_ARRAY[i] == 'KNIGHT')
+				{
+					var pushme = prob.attackType;
+					pushme.push("Knight Attack");
+					modify(prob, 'attackType', pushme);
+					modify(prob, 'knightAttack', true);		
+				}
+
+				if(ct_ARRAY[i] == 'SUPPORTED')
+				{
+					var pushme = prob.attackType;
+					pushme.push("Supported Attack");
+					modify(prob, 'attackType', pushme);
+					modify(prob, 'suppAttack', true);		
+				}
+			}
+
+			modify(prob, "checkmated", true);
+			halt();
+		} 
+
+		else 
+		{
+			backtrack();
+		}
+	}
+}
+
+rule checkDiagonalAttack {
+	when 
+	{
+		prob: Problem prob.checkmated === true && prob.diagonalAttack === true;
+		ie : interfaceElement ie.name == 'concPartStr1' && !ie.value {name : sel};
+	}
+
+	then 
+	{
+		//assert(new Hint("How does your attacking piece move?"));
+
+		var input_type = "Diagonal Attack";
+
+		if(checkSAI({selection: sel, action: "UpdateComboBox", input: input_type})) 
+		{
+			//modify(prob, "finalConclusionWritten", true);
+			modify(prob,"finishedEntering",true);	
+			halt();	
+		} 
+
+		else 
+		{
+			backtrack();
+		}
+	}
+}
+
+rule checkFileAttack {
+	when 
+	{
+
+		prob: Problem prob.checkmated === true && prob.fileAttack === true;
+		ie : interfaceElement ie.name == 'concPartStr1' && !ie.value {name : sel};
+	}
+
+	then 
+	{
+		//assert(new Hint("How does your attacking piece move?"));
+		
+		var input_type = "File Attack";
+
+		if(checkSAI({selection: sel, action: "UpdateComboBox", input: input_type})) 
+		{
+			//modify(prob, "finalConclusionWritten", true);
+			modify(prob,"finishedEntering",true);	
+			halt();	
+		} 
+
+		else 
+		{
+			backtrack();
+		}
+	}
+}
+rule checkKnightAttack {
+	when 
+	{
+		prob: Problem prob.checkmated === true && prob.knightAttack === true ;
+		ie : interfaceElement ie.name == 'concPartStr1' && !ie.value {name : sel};
+	}
+
+	then 
+	{
+		//assert(new Hint("How does your attacking piece move?"));
+		
+		var input_type = "Knight Attack";
+
+		if(checkSAI({selection: sel, action: "UpdateComboBox", input: input_type})) 
+		{
+			//modify(prob, "finalConclusionWritten", true);
+			modify(prob,"finishedEntering",true);	
+			halt();	
+		} 
+
+		else 
+		{
+			backtrack();
+		}
+	}
+}
+
+
+rule checkSupportedAttack {
+	when 
+	{
+		prob: Problem prob.checkmated === true && prob.suppAttack === true;
+		ie : interfaceElement ie.name == 'concPartStr1' && !ie.value {name : sel};
+	}
+
+	then 
+	{
+		assert(new Hint("Can the opposition's king capture your piece?"));
+		
+		var input_type = "Supported Attack";
+
+		if(checkSAI({selection: sel, action: "UpdateComboBox", input: input_type})) 
+		{
+			//modify(prob, "finalConclusionWritten", true);
+			modify(prob,"finishedEntering",true);
+			halt();		
+		} 
+
+		else 
+		{
+			backtrack();
+		}
+	}
+}
+
+
+
+rule Done {
+	when {
+		prob: Problem prob.finishedEntering === true ;
+	}
+	then {
+		
+		if (checkSAI ({selection: "done", action:"ButtonPressed", input: -1})) {
+			setSuccessOrBugMsg("Congratulations! You have completed this problem.");
+			halt();
+		}
+	}
+}

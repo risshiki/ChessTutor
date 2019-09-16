@@ -1,0 +1,13 @@
+import("productionrules.nools");
+
+global FEN_STRING = '5rk1/1pp2p1p/r5p1/p7/1P4N1/P4BP1/1B3P1P/6K1 w - - 0 1';
+
+
+
+
+
+
+
+
+
+

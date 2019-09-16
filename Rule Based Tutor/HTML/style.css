@@ -1,0 +1,20 @@
+.board {
+    width: 400px;
+    margin: auto;
+}
+
+.info {
+    width: 400px;
+    margin: auto;
+}
+
+.move-history {
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.div#ctatdiv10
+{
+	top: 38px;
+    left: 178px;
+}
